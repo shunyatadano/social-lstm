@@ -167,7 +167,8 @@ def train(args):
 
     all_epoch_results = []
     
-
+    print(f"target_ids shape: {np.array(dataloader.target_ids).shape}")
+    print(f"target_ids: {dataloader.target_ids}")
     # Training
     for epoch in range(args.num_epochs):
         print('****************Training epoch beginning******************')
@@ -182,6 +183,7 @@ def train(args):
 
             # Get batch data
             x, y, d , numPedsList, PedsList ,target_ids= dataloader.next_batch()
+            print(f"target_ids: {target_ids}")
 
             loss_batch = 0
 
@@ -197,7 +199,9 @@ def train(args):
 
                 #dense vector creation
                 x_seq, lookup_seq = dataloader.convert_proper_array(x_seq, numPedsList_seq, PedsList_seq)
-                target_id_values = x_seq[0][lookup_seq[target_id], 0:2]
+                # print(f"lookup_seq: {lookup_seq}")
+                # print(f"x_seq: {x_seq}")
+                # target_id_values = x_seq[0][lookup_seq[target_id], 0:2]
 
                 # vectorize trajectories in sequence
                 x_seq, _ = vectorize_seq(x_seq, PedsList_seq, lookup_seq)
