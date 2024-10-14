@@ -135,6 +135,7 @@ def main():
         total_error = 0
         final_error = 0
 
+        print(f"target_ids: {dataloader.target_ids}")
 
         for batch in range(dataloader.num_batches):
             start = time.time()

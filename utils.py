@@ -23,14 +23,14 @@ class DataLoader():
         '''
         # base test files
         base_test_dataset=  [
-            '/data/test/biwi/biwi_eth.txt', 
-            '/data/test/crowds/crowds_zara01.txt',
-            '/data/test/crowds/uni_examples.txt', 
-            '/data/test/stanford/coupa_0.txt',
-            '/data/test/stanford/coupa_1.txt', '/data/test/stanford/gates_2.txt','/data/test/stanford/hyang_0.txt','/data/test/stanford/hyang_1.txt','/data/test/stanford/hyang_3.txt','/data/test/stanford/hyang_8.txt',
-            '/data/test/stanford/little_0.txt','/data/test/stanford/little_1.txt','/data/test/stanford/little_2.txt','/data/test/stanford/little_3.txt','/data/test/stanford/nexus_5.txt','/data/test/stanford/nexus_6.txt',
-            '/data/test/stanford/quad_0.txt','/data/test/stanford/quad_1.txt','/data/test/stanford/quad_2.txt','/data/test/stanford/quad_3.txt'
-            '/data/test/thor_magni/scenario_1.txt'
+            # '/data/test/biwi/biwi_eth.txt', 
+            # '/data/test/crowds/crowds_zara01.txt',
+            # '/data/test/crowds/uni_examples.txt', 
+            # '/data/test/stanford/coupa_0.txt',
+            # '/data/test/stanford/coupa_1.txt', '/data/test/stanford/gates_2.txt','/data/test/stanford/hyang_0.txt','/data/test/stanford/hyang_1.txt','/data/test/stanford/hyang_3.txt','/data/test/stanford/hyang_8.txt',
+            # '/data/test/stanford/little_0.txt','/data/test/stanford/little_1.txt','/data/test/stanford/little_2.txt','/data/test/stanford/little_3.txt','/data/test/stanford/nexus_5.txt','/data/test/stanford/nexus_6.txt',
+            # '/data/test/stanford/quad_0.txt','/data/test/stanford/quad_1.txt','/data/test/stanford/quad_2.txt','/data/test/stanford/quad_3.txt'
+            '/data/test/thor_magni/20_Scenario_1.txt'
             ]
         #base train files
         base_train_dataset = [
@@ -41,7 +41,7 @@ class DataLoader():
             #'/data/train/stanford/bookstore_0.txt','/data/train/stanford/bookstore_1.txt','/data/train/stanford/bookstore_2.txt','/data/train/stanford/bookstore_3.txt','/data/train/stanford/coupa_3.txt','/data/train/stanford/deathCircle_0.txt','/data/train/stanford/deathCircle_1.txt','/data/train/stanford/deathCircle_2.txt','/data/train/stanford/deathCircle_3.txt',
             #'/data/train/stanford/deathCircle_4.txt','/data/train/stanford/gates_0.txt','/data/train/stanford/gates_1.txt','/data/train/stanford/gates_3.txt','/data/train/stanford/gates_4.txt','/data/train/stanford/gates_5.txt','/data/train/stanford/gates_6.txt','/data/train/stanford/gates_7.txt','/data/train/stanford/gates_8.txt','/data/train/stanford/hyang_4.txt',
             #'/data/train/stanford/hyang_5.txt','/data/train/stanford/hyang_6.txt','/data/train/stanford/hyang_9.txt','/data/train/stanford/nexus_0.txt','/data/train/stanford/nexus_1.txt','/data/train/stanford/nexus_2.txt','/data/train/stanford/nexus_3.txt','/data/train/stanford/nexus_4.txt','/data/train/stanford/nexus_7.txt','/data/train/stanford/nexus_8.txt','/data/train/stanford/nexus_9.txt'
-            '/data/train/thor_magni/Scenario_1.txt'
+            '/data/train/thor_magni/20_Scenario_1.txt'
             ]
         # dimensions of each file set
         self.dataset_dimensions = {'biwi':[720, 576], 'crowds':[720, 576], 'stanford':[595, 326], 'mot':[768, 576], 'thor_magni':[22324, 9952]}
@@ -411,7 +411,6 @@ class DataLoader():
             pedsList = self.pedsList[self.dataset_pointer]
             # Get the frame pointer for the current dataset
             idx = self.frame_pointer
-            print(f"frame_data length: {len(frame_data)}")
             # While there is still seq_length number of frames left in the current dataset
             if idx + self.seq_length-1 < len(frame_data):
                 # All the data in this sequence
@@ -426,10 +425,10 @@ class DataLoader():
                 numPedsList_batch.append(seq_numPedsList)
                 PedsList_batch.append(seq_PedsList)
 
-                # taddy
-                print(f"frame_pointer: {self.frame_pointer}, seq_length: {self.seq_length}")
-                index = math.floor((self.frame_pointer)/self.seq_length)
-                print(f"index: {index}")
+                # # taddy
+                # print(f"frame_pointer: {self.frame_pointer}, seq_length: {self.seq_length}")
+                # index = math.floor((self.frame_pointer)/self.seq_length)
+                # print(f"index: {index}")
 
                 # get correct target ped id for the sequence
                 target_ids.append(self.target_ids[self.dataset_pointer][math.floor((self.frame_pointer)/self.seq_length)])

@@ -167,8 +167,9 @@ def train(args):
 
     all_epoch_results = []
     
-    print(f"target_ids shape: {np.array(dataloader.target_ids).shape}")
-    print(f"target_ids: {dataloader.target_ids}")
+    # print(f"target_ids shape: {np.array(dataloader.target_ids).shape}")
+    # print(f"target_ids: {dataloader.target_ids}")
+
     # Training
     for epoch in range(args.num_epochs):
         print('****************Training epoch beginning******************')
@@ -183,7 +184,7 @@ def train(args):
 
             # Get batch data
             x, y, d , numPedsList, PedsList ,target_ids= dataloader.next_batch()
-            print(f"target_ids: {target_ids}")
+            # print(f"target_ids: {target_ids}")
 
             loss_batch = 0
 
