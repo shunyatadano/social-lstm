@@ -31,7 +31,8 @@ class DataLoader():
                           '/data/test/stanford/quad_0.txt','/data/test/stanford/quad_1.txt','/data/test/stanford/quad_2.txt','/data/test/stanford/quad_3.txt'
                           ]
         #base train files
-        base_train_dataset = ['/data/train/biwi/biwi_hotel.txt', 
+        base_train_dataset = [
+                        '/data/train/biwi/biwi_hotel.txt', 
                         #'/data/train/crowds/arxiepiskopi1.txt','/data/train/crowds/crowds_zara02.txt',
                         #'/data/train/crowds/crowds_zara03.txt','/data/train/crowds/students001.txt','/data/train/crowds/students003.txt',
                         #'/data/train/mot/PETS09-S2L1.txt',
