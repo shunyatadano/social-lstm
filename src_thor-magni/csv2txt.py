@@ -5,7 +5,7 @@ import pandas as pd
 # csv_file = '/home/eevee/social-lstm/thor-magni/tm_png_merge/Scenario_1/val/interpolated_data.csv'
 # csv_file = '/home/eevee/social-lstm/thor-magni/tm_png_merge/Scenario_1/test/test_interpolated.csv'
 
-csv_file = '/home/eevee/social-lstm/thor-magni/tm_png/Scenario_1/test/20241014_Magni_180522_SC1B_R1.csv'
+csv_file = '/home/eevee/social-lstm/thor-magni/tm_png/Scenario_1/val/20241016_Magni_170522_SC1B_R2.csv'
 df = pd.read_csv(csv_file)
 
 # 必要なカラムの抽出と順番の入れ替え
@@ -22,7 +22,7 @@ print(f"yrange: {df['y'].min()} to {df['y'].max()}")
 # save_path = '/home/eevee/social-lstm/thor-magni/tm_png_merge/Scenario_1/txt/val/Scenario_1.txt'
 # save_path = '/home/eevee/social-lstm/thor-magni/tm_png_merge/Scenario_1/txt/test/Scenario_1.txt'
 
-save_path = '/home/eevee/social-lstm/data/test/thor_magni/20_Scenario_1.txt'
+save_path = '/home/eevee/social-lstm/data/validation/thor_magni/20241016_Magni_180522_SC1B_R1.txt'
 
 df.to_csv(save_path, sep=' ', index=False, header=False)
 # df.to_csv(save_path, sep='\t', index=False, header=False)
