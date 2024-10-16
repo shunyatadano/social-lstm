@@ -218,7 +218,6 @@ class DataLoader():
                 df = pd.read_csv(directory, dtype={'frame_num':'int','ped_id':'int' }, delimiter = ' ',  header=None, names=column_names)
                 self.target_ids = np.array(df.drop_duplicates(subset={'ped_id'}, keep='first', inplace=False)['ped_id'])
 
-
             else:
                 # if validation mode, read validation file to pandas dataframe and process
                 if self.additional_validation:
@@ -229,7 +228,14 @@ class DataLoader():
                 else:
                     column_names = ['frame_num','ped_id','y','x']
                     df = pd.read_csv(directory, dtype={'frame_num':'int','ped_id':'int' }, delimiter = ' ',  header=None, names=column_names, converters = {c:lambda x: float('nan') if x == '?' else float(x) for c in ['y','x']})
-                    self.target_ids = np.array(df[df['y'].isnull()].drop_duplicates(subset={'ped_id'}, keep='first', inplace=False)['ped_id'])
+                    print(df.tail())
+
+                    # 只野が修正した
+                    # self.target_ids = np.array(df[df['y'].isnull()].drop_duplicates(subset={'ped_id'}, keep='first', inplace=False)['ped_id'])
+                    self.target_ids = np.array(df['ped_id'].unique())
+
+                    # print(f"target_ids ----->>>>> \n{self.target_ids}")
+                    # print(f"all unique ids: ----->>>>> \n{np.array(df['ped_id'].unique())}")
 
             # convert pandas -> numpy array
             data = np.array(df)
@@ -343,7 +349,16 @@ class DataLoader():
         self.target_ids = self.raw_data[7]
         self.orig_data = self.raw_data[8]
 
-
+        print(f"raw_data length: {len(self.raw_data)}")
+        # print(f"data: {self.data}")
+        # print(f"frameList: {self.frameList}")
+        # print(f"numPedsList: {self.numPedsList}")
+        # print(f"valid_numPedsList: {self.valid_numPedsList}")
+        # print(f"valid_data: {self.valid_data}")
+        # print(f"pedsList: {self.pedsList}")
+        # print(f"valid_pedsList: {self.valid_pedsList}")
+        print(f"target_ids: {self.target_ids}")
+        # print(f"orig_data: {self.orig_data}")
 
         counter = 0
         valid_counter = 0
@@ -425,10 +440,12 @@ class DataLoader():
                 numPedsList_batch.append(seq_numPedsList)
                 PedsList_batch.append(seq_PedsList)
 
-                # # taddy
-                # print(f"frame_pointer: {self.frame_pointer}, seq_length: {self.seq_length}")
-                # index = math.floor((self.frame_pointer)/self.seq_length)
-                # print(f"index: {index}")
+                # taddy
+                print(f"frame_pointer: {self.frame_pointer}, seq_length: {self.seq_length}")
+                index = math.floor((self.frame_pointer)/self.seq_length)
+                print(f"index: {index}")
+                print(f"target_ids: {self.target_ids}")
+                # print(f"target_ids[index]: {self.target_ids[index]}")
 
                 # get correct target ped id for the sequence
                 target_ids.append(self.target_ids[self.dataset_pointer][math.floor((self.frame_pointer)/self.seq_length)])
