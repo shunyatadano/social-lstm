@@ -23,14 +23,14 @@ class DataLoader():
         '''
         # base test files
         base_test_dataset=  [
-            # '/data/test/biwi/biwi_eth.txt', 
-            # '/data/test/crowds/crowds_zara01.txt',
-            # '/data/test/crowds/uni_examples.txt', 
-            # '/data/test/stanford/coupa_0.txt',
-            # '/data/test/stanford/coupa_1.txt', '/data/test/stanford/gates_2.txt','/data/test/stanford/hyang_0.txt','/data/test/stanford/hyang_1.txt','/data/test/stanford/hyang_3.txt','/data/test/stanford/hyang_8.txt',
-            # '/data/test/stanford/little_0.txt','/data/test/stanford/little_1.txt','/data/test/stanford/little_2.txt','/data/test/stanford/little_3.txt','/data/test/stanford/nexus_5.txt','/data/test/stanford/nexus_6.txt',
-            # '/data/test/stanford/quad_0.txt','/data/test/stanford/quad_1.txt','/data/test/stanford/quad_2.txt','/data/test/stanford/quad_3.txt'
-            '/data/test/thor_magni/20241016_Magni_180522_SC1B_R1.txt'
+            '/data/test/biwi/biwi_eth.txt', 
+            '/data/test/crowds/crowds_zara01.txt',
+            '/data/test/crowds/uni_examples.txt', 
+            '/data/test/stanford/coupa_0.txt',
+            '/data/test/stanford/coupa_1.txt', '/data/test/stanford/gates_2.txt','/data/test/stanford/hyang_0.txt','/data/test/stanford/hyang_1.txt','/data/test/stanford/hyang_3.txt','/data/test/stanford/hyang_8.txt',
+            '/data/test/stanford/little_0.txt','/data/test/stanford/little_1.txt','/data/test/stanford/little_2.txt','/data/test/stanford/little_3.txt','/data/test/stanford/nexus_5.txt','/data/test/stanford/nexus_6.txt',
+            '/data/test/stanford/quad_0.txt','/data/test/stanford/quad_1.txt','/data/test/stanford/quad_2.txt','/data/test/stanford/quad_3.txt'
+            # '/data/test/thor_magni/20241016_Magni_180522_SC1B_R1.txt'
             ]
         #base train files
         base_train_dataset = [
@@ -349,7 +349,7 @@ class DataLoader():
         self.target_ids = self.raw_data[7]
         self.orig_data = self.raw_data[8]
 
-        print(f"raw_data length: {len(self.raw_data)}")
+        # print(f"raw_data length: {len(self.raw_data)}")
         # print(f"data: {self.data}")
         # print(f"frameList: {self.frameList}")
         # print(f"numPedsList: {self.numPedsList}")
@@ -357,7 +357,7 @@ class DataLoader():
         # print(f"valid_data: {self.valid_data}")
         # print(f"pedsList: {self.pedsList}")
         # print(f"valid_pedsList: {self.valid_pedsList}")
-        print(f"target_ids: {self.target_ids}")
+        # print(f"target_ids: {self.target_ids}")
         # print(f"orig_data: {self.orig_data}")
 
         counter = 0
@@ -441,10 +441,10 @@ class DataLoader():
                 PedsList_batch.append(seq_PedsList)
 
                 # taddy
-                print(f"frame_pointer: {self.frame_pointer}, seq_length: {self.seq_length}")
+                # print(f"frame_pointer: {self.frame_pointer}, seq_length: {self.seq_length}")
                 index = math.floor((self.frame_pointer)/self.seq_length)
-                print(f"index: {index}")
-                print(f"target_ids: {self.target_ids}")
+                # print(f"index: {index}")
+                # print(f"target_ids: {self.target_ids}")
                 # print(f"target_ids[index]: {self.target_ids[index]}")
 
                 # get correct target ped id for the sequence
